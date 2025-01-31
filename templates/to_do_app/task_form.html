@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ is_create|yesno:"Add Task,Update Task" }}
+{% endblock %}
+
+{% block content %}
+  <h1>{{ is_create|yesno:"Add Task,Update Task" }}: </h1>
+  <form method="post">
+    {% csrf_token %}
+
+    <div>
+      <label for="{{ form.content.id_for_label }}">Content</label>
+      {{ form.content }}
+    </div>
+    <div>
+      <label for="{{ form.deadline.id_for_label }}">Deadline</label>
+      {{ form.deadline }}
+    </div>
+    <div>
+        <label for="{{ form.tags.id_for_label }}">Tags</label>
+        {{ form.tags }}
+    </div>
+    <input class="btn btn-success" type="submit" value="Save">
+  </form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ is_create|yesno:"Add Tag,Change Tag" }}
+{% endblock %}
+
+{% block content %}
+	<h1>{{ is_create|yesno:"Add Tag,Change Tag" }}: </h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.name }}
+    <input class="btn btn-success" type="submit" value="Save">
+  </form>
+{% endblock %}
